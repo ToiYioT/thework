@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid"
 import '../css/app.css'
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -9,10 +9,18 @@ export const InquiryContext = createContext();
 
 export default function App() {
   const [data, setData] = useLocalStorage("thework-data", [getNewInquiry()]);
+  const [selectedInquiryId, setSelectedInquiryId] = useState(data[0].id);
+
+  const selectedInquiry = data.filter(inquiry => inquiry.id === selectedInquiryId)[0];
 
   const contextValue = {
     setInquiry,
     addInquiry,
+    handleSetSelectedInquiryId,
+  }
+
+  function handleSetSelectedInquiryId(id) {
+    setSelectedInquiryId(id);
   }
 
   function setInquiry(id, newInquiry) {
@@ -35,7 +43,8 @@ export default function App() {
       <div className="main-container">
         <InquirySelector allInquiries={data} />
         <InquiryView
-          inquiryData={data[0]}
+          inquiryData={selectedInquiry}
+          key={selectedInquiry.id}
         />
 
       </div>

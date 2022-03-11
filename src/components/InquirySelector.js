@@ -12,7 +12,7 @@ export default function InquirySelector({ allInquiries }) {
             {
                 allInquiries.map(inquiry => {
                     return <InquiryCard
-                        thought={inquiry.thought}
+                        inquiry={inquiry}
                         key={inquiry.id}
                     />
                 })
