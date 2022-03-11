@@ -1,11 +1,24 @@
-.thought-title{
-    font-size: 2rem;
+.answer{
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    /* outline: none;
+    border: none; */
 }
 
 .question{
     font-size: 1.5rem;
+    color: var(--faded-color);
+    font-weight: bold;
+    margin: 0 0 1rem 0;
 }
 
-.answer{
-    font-size: 1.2rem;
+.input-field{
+    width: 100%;
+    resize: vertical;
+    border: none;
+}
+
+.thought-title{
+    font-size: 2rem;
+    color: var(--accent-color);
 }

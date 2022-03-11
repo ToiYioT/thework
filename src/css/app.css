@@ -1,6 +1,12 @@
 @import-normalize;
 @import 'inquiry-view.css';
 
+:root{
+  --accent-color : rgb(185, 125, 185);
+  --faded-color : rgb(151, 151, 151);
+}
+
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
