@@ -25,3 +25,18 @@ html, body{
 .button{
   padding: 1rem;
 }
+
+.delete-button{
+  align-self: center;
+  color: red;
+  font-weight: bold;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  padding: 1rem;
+  margin-left: 1rem;
+}
+
+.delete-button:hover{
+  border: 2px solid red;
+  cursor: pointer;
+}

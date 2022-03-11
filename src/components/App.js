@@ -9,7 +9,7 @@ export const InquiryContext = createContext();
 
 export default function App() {
   const [data, setData] = useLocalStorage("thework-data", [getNewInquiry()]);
-  const [selectedInquiryId, setSelectedInquiryId] = useState(data[0].id);
+  const [selectedInquiryId, setSelectedInquiryId] = useState(null);
 
   const selectedInquiry = data.filter(inquiry => inquiry.id === selectedInquiryId)[0];
 
@@ -18,10 +18,13 @@ export default function App() {
     addInquiry,
     handleSetSelectedInquiryId,
     selectedInquiryId,
+    deleteInquiry,
   }
 
   function handleSetSelectedInquiryId(id) {
-    setSelectedInquiryId(id);
+
+    const newId = selectedInquiryId === id ? null : id;
+    setSelectedInquiryId(newId);
   }
 
   function setInquiry(id, newInquiry) {
@@ -34,19 +37,31 @@ export default function App() {
   }
 
   function addInquiry() {
+    const newInquiry = getNewInquiry();
     setData(prevData => {
-      return [...prevData, getNewInquiry()];
-    })
+      return [...prevData, newInquiry];
+    });
+
+    handleSetSelectedInquiryId(newInquiry.id);
+  }
+
+  function deleteInquiry(id) {
+    setData(prevData => {
+      return prevData.filter(inquiry => inquiry.id !== id);
+    });
   }
 
   return (
     <InquiryContext.Provider value={contextValue}>
       <div className="main-container">
         <InquirySelector allInquiries={data} />
-        <InquiryView
-          inquiryData={selectedInquiry}
-          key={selectedInquiry.id}
-        />
+
+        {selectedInquiry &&
+          <InquiryView
+            inquiryData={selectedInquiry}
+            key={selectedInquiry.id}
+          />
+        }
 
       </div>
 

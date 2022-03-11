@@ -1,8 +1,11 @@
+.thought-container{
+    display: flex;
+}
+
 .inquiry-view-container{
     outline: 1px solid black;
     padding : 1rem;
     flex: 1;
-
 }
 
 .answer{

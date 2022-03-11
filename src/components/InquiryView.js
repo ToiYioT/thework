@@ -12,7 +12,7 @@ export default function InquiryView(props) {
         whoWouldYouBe,
     } = props.inquiryData;
 
-    const { setInquiry } = useContext(InquiryContext);
+    const { setInquiry, deleteInquiry } = useContext(InquiryContext);
 
     function updateInquiry(change) {
         const newInquiry = { ...props.inquiryData, ...change };
@@ -27,6 +27,12 @@ export default function InquiryView(props) {
                     defaultValue={thought}
                     onChange={e => updateInquiry({ thought: e.target.value })}
                 ></textarea>
+                <button
+                    className='delete-button'
+                    onClick={() => deleteInquiry(props.inquiryData.id)}
+                >
+                    DELETE
+                </button>
             </div>
 
             <Question
