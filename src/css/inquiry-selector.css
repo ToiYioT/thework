@@ -6,11 +6,14 @@
 
 .inquiry-card-container{
 
-    background-color: var(--selected-inquiry-background-color);
-    color: var(--selected-inquiry-text-color);
     width: 200px;
     min-height: 100px;
     padding: 1rem;
     border: 1px solid black;
     border-top: none;
+}
+
+.selected-card{
+    background-color: var(--selected-inquiry-background-color);
+    color: var(--selected-inquiry-text-color);
 }

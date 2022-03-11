@@ -17,6 +17,7 @@ export default function App() {
     setInquiry,
     addInquiry,
     handleSetSelectedInquiryId,
+    selectedInquiryId,
   }
 
   function handleSetSelectedInquiryId(id) {
