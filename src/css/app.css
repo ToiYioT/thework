@@ -1,0 +1,6 @@
+@import-normalize;
+@import 'buttons.css';
+
+* {
+  box-sizing: border-box;
+}
