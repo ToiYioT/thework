@@ -1,5 +1,5 @@
 @import-normalize;
-@import 'buttons.css';
+@import 'inquiry-view.css';
 
 * {
   box-sizing: border-box;
