@@ -1,12 +1,27 @@
 @import-normalize;
 @import 'inquiry-view.css';
+@import 'inquiry-selector.css';
 
 :root{
   --accent-color : rgb(185, 125, 185);
   --faded-color : rgb(151, 151, 151);
+  --selected-inquiry-background-color: rgb(122, 95, 124);
+  --selected-inquiry-text-color: rgb(255, 255, 255);
 }
 
 * {
   box-sizing: border-box;
   font-family: sans-serif;
+}
+
+html, body{
+  margin: 0;
+}
+
+.main-container{
+  display: flex;
+}
+
+.button{
+  padding: 1rem;
 }

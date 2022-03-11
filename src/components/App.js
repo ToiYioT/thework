@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { v4 as uuidv4 } from "uuid"
 import '../css/app.css'
 import useLocalStorage from "../hooks/useLocalStorage";
+import InquirySelector from "./InquirySelector";
 import InquiryView from "./InquiryView";
 
 export const InquiryContext = createContext();
@@ -11,6 +12,7 @@ export default function App() {
 
   const contextValue = {
     setInquiry,
+    addInquiry,
   }
 
   function setInquiry(id, newInquiry) {
@@ -22,11 +24,21 @@ export default function App() {
     });
   }
 
+  function addInquiry() {
+    setData(prevData => {
+      return [...prevData, getNewInquiry()];
+    })
+  }
+
   return (
     <InquiryContext.Provider value={contextValue}>
-      <InquiryView
-        inquiryData={data[0]}
-      />
+      <div className="main-container">
+        <InquirySelector allInquiries={data} />
+        <InquiryView
+          inquiryData={data[0]}
+        />
+
+      </div>
 
     </InquiryContext.Provider>
   );
