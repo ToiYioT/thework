@@ -1,7 +1,9 @@
 
 import React, { useContext } from 'react'
 import { InquiryContext } from './App';
+import DeleteButton from './DeleteButton';
 import Question from './Question';
+import TurnaroundSection from './TurnaroundSection';
 
 export default function InquiryView(props) {
     const {
@@ -27,12 +29,8 @@ export default function InquiryView(props) {
                     defaultValue={thought}
                     onChange={e => updateInquiry({ thought: e.target.value })}
                 ></textarea>
-                <button
-                    className='delete-button'
-                    onClick={() => deleteInquiry(props.inquiryData.id)}
-                >
-                    DELETE
-                </button>
+
+                <DeleteButton onClick={() => deleteInquiry(props.inquiryData.id)} />
             </div>
 
             <Question
@@ -55,6 +53,10 @@ export default function InquiryView(props) {
                 answer={whoWouldYouBe}
                 onChange={e => updateInquiry({ whoWouldYouBe: e.target.value })}
             />
+
+            <TurnaroundSection
+                updateInquiry={updateInquiry}
+                turnaroundData={props.inquiryData.turnarounds} />
         </div>
     )
 }

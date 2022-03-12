@@ -8,6 +8,14 @@
     flex: 1;
 }
 
+.turnaround-title-container{
+    display: flex;
+}
+
+.turnaround-container{
+    margin: 1rem;
+}
+
 .answer{
     font-size: 1.2rem;
     margin: 0 0 1rem 0;

@@ -19,6 +19,7 @@ export default function App() {
     handleSetSelectedInquiryId,
     selectedInquiryId,
     deleteInquiry,
+    getNewTurnaround
   }
 
   function handleSetSelectedInquiryId(id) {
@@ -74,13 +75,13 @@ export default function App() {
 function getNewInquiry() {
   const newInqury = {
     id: uuidv4(),
-    thought: "I'm bad",
-    isThatTrue: "Yes",
-    areYouSure: "No",
-    howDoYouReact: "Bad",
-    whoWouldYouBe: "Good",
+    thought: "New Thought",
+    isThatTrue: "",
+    areYouSure: "",
+    howDoYouReact: "",
+    whoWouldYouBe: "",
     turnarounds: [
-      getNewTurnaround()
+      getNewTurnaround(),
     ]
   }
 
@@ -90,7 +91,7 @@ function getNewInquiry() {
 function getNewTurnaround() {
   const newTurnaround = {
     id: uuidv4(),
-    turnaround: "I'm not bad",
+    turnaround: "Turnaround",
     examples: [
       getNewExample()
     ]
@@ -102,7 +103,7 @@ function getNewTurnaround() {
 function getNewExample() {
   const newExample = {
     id: uuidv4(),
-    example: "Because I'm awesome!",
+    example: "New example",
   }
 
   return newExample;
