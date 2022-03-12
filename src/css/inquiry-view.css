@@ -1,10 +1,18 @@
 .thought-container{
     display: flex;
+    background-color: var(--selected-inquiry-background-color);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+}
+
+.questions-container{
+    margin: 1rem;
 }
 
 .inquiry-view-container{
     outline: 1px solid black;
-    padding : 1rem;
     flex: 1;
     max-height: 100vh;
     overflow-y: scroll;
@@ -47,7 +55,8 @@
 
 .thought-title{
     font-size: 2rem;
-    color: var(--accent-color);
+    color: white;
+    background-color: var(--selected-inquiry-background-color);
 }
 
 .example{

@@ -33,26 +33,29 @@ export default function InquiryView(props) {
                 <DeleteButton onClick={() => deleteInquiry(props.inquiryData.id)} />
             </div>
 
-            <Question
-                title="Is that true?"
-                answer={isThatTrue}
-                onChange={e => updateInquiry({ isThatTrue: e.target.value })}
-            />
-            <Question
-                title="Are you absolutely sure that's true?"
-                answer={areYouSure}
-                onChange={e => updateInquiry({ areYouSure: e.target.value })}
-            />
-            <Question
-                title="How do you react when you have that thought?"
-                answer={howDoYouReact}
-                onChange={e => updateInquiry({ howDoYouReact: e.target.value })}
-            />
-            <Question
-                title="Who would you be without that thought?"
-                answer={whoWouldYouBe}
-                onChange={e => updateInquiry({ whoWouldYouBe: e.target.value })}
-            />
+            <div className="questions-container">
+                <Question
+                    title="Is that true?"
+                    answer={isThatTrue}
+                    onChange={e => updateInquiry({ isThatTrue: e.target.value })}
+                />
+                <Question
+                    title="Are you absolutely sure that's true?"
+                    answer={areYouSure}
+                    onChange={e => updateInquiry({ areYouSure: e.target.value })}
+                />
+                <Question
+                    title="How do you react when you have that thought?"
+                    answer={howDoYouReact}
+                    onChange={e => updateInquiry({ howDoYouReact: e.target.value })}
+                />
+                <Question
+                    title="Who would you be without that thought?"
+                    answer={whoWouldYouBe}
+                    onChange={e => updateInquiry({ whoWouldYouBe: e.target.value })}
+                />
+            </div>
+
 
             <TurnaroundSection
                 updateInquiry={updateInquiry}
