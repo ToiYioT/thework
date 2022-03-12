@@ -19,7 +19,8 @@ export default function App() {
     handleSetSelectedInquiryId,
     selectedInquiryId,
     deleteInquiry,
-    getNewTurnaround
+    getNewTurnaround,
+    getNewExample,
   }
 
   function handleSetSelectedInquiryId(id) {
@@ -91,10 +92,8 @@ function getNewInquiry() {
 function getNewTurnaround() {
   const newTurnaround = {
     id: uuidv4(),
-    turnaround: "Turnaround",
-    examples: [
-      getNewExample()
-    ]
+    turnaround: "New Turnaround",
+    examples: []
   }
 
   return newTurnaround;

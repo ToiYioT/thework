@@ -10,7 +10,8 @@ export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
             <Turnaround
                 key={turnaround.id}
                 turnaround={turnaround}
-
+                deleteTurnaround={deleteTurnaround}
+                changeTurnaround={changeTurnaround}
             />
         )
     })
@@ -24,10 +25,19 @@ export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
 
     function changeTurnaround(id, newTurnaround) {
 
+        const newTurnarounds = turnaroundData.map(turnaround => {
+            if (turnaround.id === id) return newTurnaround;
+            return turnaround;
+        })
+
+        updateInquiry({ turnarounds: newTurnarounds });
     }
 
     function deleteTurnaround(id) {
-
+        const newTurnarounds = turnaroundData.filter(turnaround => {
+            return turnaround.id !== id;
+        })
+        updateInquiry({ turnarounds: newTurnarounds });
     }
 
     return (

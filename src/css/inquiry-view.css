@@ -12,6 +12,13 @@
     display: flex;
 }
 
+.turnaround-example-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
 .turnaround-container{
     margin: 1rem;
 }
@@ -39,5 +46,9 @@
 .thought-title{
     font-size: 2rem;
     color: var(--accent-color);
+}
+
+.example{
+    font-size: 1.2rem;
 }
 
