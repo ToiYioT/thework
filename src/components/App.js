@@ -64,6 +64,12 @@ export default function App() {
             key={selectedInquiry.id}
           />
         }
+        {
+          !selectedInquiry &&
+          <div className="no-inquiry-selected">
+            {data.length > 0 ? "Select an inquiry!" : "Create a new Inquiry!"}
+          </div>
+        }
 
       </div>
 

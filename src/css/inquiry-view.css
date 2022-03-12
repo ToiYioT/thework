@@ -6,6 +6,8 @@
     outline: 1px solid black;
     padding : 1rem;
     flex: 1;
+    max-height: 100vh;
+    overflow-y: scroll;
 }
 
 .turnaround-title-container{

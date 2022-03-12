@@ -8,19 +8,22 @@ export default function InquirySelector({ allInquiries }) {
     const { addInquiry } = useContext(InquiryContext);
 
     return (
-        <div className="inquiry-selector-container">
-            {
-                allInquiries.map(inquiry => {
-                    return <InquiryCard
-                        inquiry={inquiry}
-                        key={inquiry.id}
-                    />
-                })
-            }
+        <div className="side-bar-container">
+            <div className="inquiry-selector-container">
+                {
+                    allInquiries.map(inquiry => {
+                        return <InquiryCard
+                            inquiry={inquiry}
+                            key={inquiry.id}
+                        />
+                    })
+                }
+            </div>
             <button
                 className='button'
                 onClick={() => addInquiry()}
             >NEW INQUIRY</button>
+
         </div>
     )
 }
