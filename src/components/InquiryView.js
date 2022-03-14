@@ -1,5 +1,6 @@
 
 import React, { useContext, useEffect } from 'react'
+import TextareaAutosize from 'react-textarea-autosize';
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton';
 import Question from './Question';
@@ -25,11 +26,11 @@ export default function InquiryView(props) {
     return (
         <div className="inquiry-view-container">
             <div className="thought-container">
-                <textarea
+                <TextareaAutosize
                     className='thought-title'
                     defaultValue={thought}
                     onChange={e => updateInquiry({ thought: e.target.value })}
-                ></textarea>
+                />
 
                 <DeleteButton onClick={() => deleteInquiry(props.inquiryData.id)} />
             </div>

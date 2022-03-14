@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import TextareaAutosize from 'react-textarea-autosize';
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton'
 
@@ -21,11 +22,11 @@ export default function Turnaround(props) {
 
         return (
             <div className="turnaround-example-container" key={example.id}>
-                <textarea
+                <TextareaAutosize
                     className='input-field example'
                     defaultValue={example.example}
                     onChange={(e) => handleChange({ example: e.target.value })}
-                ></textarea>
+                />
                 <button
                     className="delete-example-button"
                     onClick={() => deleteExample(example.id)}
@@ -66,22 +67,25 @@ export default function Turnaround(props) {
         <div className="turnaround-container">
 
             <div className="turnaround-title-container">
-                <textarea
+                <TextareaAutosize
                     className='question input-field'
                     defaultValue={turnaround.turnaround}
                     onChange={(e) => updateTurnaround({ turnaround: e.target.value })}
-                ></textarea>
+                />
                 <DeleteButton onClick={() => deleteTurnaround(turnaround.id)} />
             </div>
 
-            {examples}
+            <div className="examples-container">
 
-            <button
-                className='button'
-                onClick={addExample}
-            >
-                ADD EXAMPLE
-            </button>
+                {examples}
+                <button
+                    className='add-example-button'
+                    onClick={addExample}
+                >
+                    +
+                </button>
+            </div>
+
 
         </div>
     )

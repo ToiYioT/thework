@@ -7,6 +7,9 @@
   --faded-color : rgb(151, 151, 151);
   --selected-inquiry-background-color: rgb(122, 95, 124);
   --selected-inquiry-text-color: rgb(255, 255, 255);
+  --background-color: rgb(224, 212, 219);
+  --question-color: rgb(255, 255, 255);
+  --text-color: rgb(80, 80, 80);
 }
 
 * {
