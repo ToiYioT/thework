@@ -42,7 +42,7 @@ export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
 
     return (
         <div className="turnaround-section-container">
-            <div className="thought-title question">Turnarounds</div>
+            <div className="turnaround-title">Turnarounds</div>
             {turnarounds}
 
             <button

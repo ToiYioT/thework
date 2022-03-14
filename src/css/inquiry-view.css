@@ -22,6 +22,10 @@
     display: flex;
 }
 
+.turnaround-section-container{
+    margin-bottom: 2rem;
+}
+
 .turnaround-example-container{
     display: flex;
     align-items: center;
@@ -35,7 +39,6 @@
 
 .answer{
     font-size: 1.2rem;
-    margin: 0 0 1rem 0;
     /* outline: none;
     border: none; */
 }
@@ -44,12 +47,14 @@
     font-size: 1.5rem;
     color: var(--faded-color);
     font-weight: bold;
-    margin: 0 0 1rem 0;
+    margin: 2rem 0 1rem 0;
 }
 
 .input-field{
     width: 100%;
-    resize: vertical;
+    height: 1.2rem;
+    line-height: 1.4em;
+    resize: none;
     border: none;
 }
 
@@ -57,6 +62,20 @@
     font-size: 2rem;
     color: white;
     background-color: var(--selected-inquiry-background-color);
+    resize: none;
+    border: none;
+    width: 100%;
+    font-weight: bold;
+    height: 1.2rem;
+}
+
+.turnaround-title{
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: var(--selected-inquiry-background-color);
+    color: white;
+    padding: 1rem;
+    margin: 4rem 0 1rem 0;
 }
 
 .example{

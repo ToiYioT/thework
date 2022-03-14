@@ -9,6 +9,14 @@ export default function InquirySelector({ allInquiries }) {
 
     return (
         <div className="side-bar-container">
+
+            <div className="search-bar-container">
+                <div>Filter</div>
+                <input>
+
+                </input>
+            </div>
+
             <div className="inquiry-selector-container">
                 {
                     allInquiries.map(inquiry => {

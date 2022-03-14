@@ -20,3 +20,8 @@
     background-color: var(--selected-inquiry-background-color);
     color: var(--selected-inquiry-text-color);
 }
+
+.search-bar-container{
+    margin-bottom: 1rem;
+    padding: 1rem;
+}

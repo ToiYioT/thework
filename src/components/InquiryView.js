@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton';
 import Question from './Question';
@@ -16,6 +16,7 @@ export default function InquiryView(props) {
 
     const { setInquiry, deleteInquiry } = useContext(InquiryContext);
 
+
     function updateInquiry(change) {
         const newInquiry = { ...props.inquiryData, ...change };
         setInquiry(props.inquiryData.id, newInquiry);
@@ -25,7 +26,7 @@ export default function InquiryView(props) {
         <div className="inquiry-view-container">
             <div className="thought-container">
                 <textarea
-                    className='question input-field thought-title'
+                    className='thought-title'
                     defaultValue={thought}
                     onChange={e => updateInquiry({ thought: e.target.value })}
                 ></textarea>

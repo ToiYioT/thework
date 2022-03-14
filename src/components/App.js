@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useLayoutEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid"
 import '../css/app.css'
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -10,6 +10,15 @@ export const InquiryContext = createContext();
 export default function App() {
   const [data, setData] = useLocalStorage("thework-data", [getNewInquiry()]);
   const [selectedInquiryId, setSelectedInquiryId] = useState(null);
+
+  useLayoutEffect(() => {
+
+    for (let elem of document.getElementsByTagName("textarea")) {
+
+      // elem.style.height = 0;
+      elem.style.height = elem.scrollHeight + 'px';
+    }
+  });
 
   const selectedInquiry = data.filter(inquiry => inquiry.id === selectedInquiryId)[0];
 

@@ -18,6 +18,12 @@ html, body{
   margin: 0;
 }
 
+/* textarea{
+  overflow-x: auto;
+  white-space: nowrap;
+  resize: none;
+} */
+
 .main-container{
   display: flex;
 }
