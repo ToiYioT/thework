@@ -1,0 +1,96 @@
+.turnaround-section-container{
+    margin-bottom: 2rem;
+}
+
+.turnarounds-container{
+    margin: auto;
+    max-width: 600px;
+    align-self: center;
+}
+
+.turnaround-container{
+    background-color: var(--question-color);
+    border: 2px solid var(--selected-inquiry-background-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1.5rem 2rem 1rem 2rem;
+    box-shadow: 0 8px 6px -6px var(--selected-inquiry-background-color);
+}
+
+
+.turnaround-title-container{
+    display: flex;
+}
+
+
+.turnaround-example-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.examples-container{
+    margin: 2rem 1rem;
+}
+
+.turnaround-title{
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: var(--selected-inquiry-background-color);
+    color: white;
+    padding: 1rem;
+    margin: 4rem 0 1rem 0;
+}
+
+.add-example-button, .delete-example-button{
+    background-color: transparent;
+    color: var(--faded-color);
+    border: 1px solid transparent;
+    border-radius: .2rem;
+}
+
+.add-example-button{
+    font-size: 2rem;
+    padding: 0 .5rem;
+}
+
+.delete-example-button{
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: .3rem .6rem;
+}
+
+.add-example-button:hover, .delete-example-button:hover{
+    background-color: var(--background-color);
+    color: white;
+    border: 1px solid var(--faded-color);
+}
+
+.add-turnaround-button{
+    padding: 1rem;
+    margin: 1rem;
+    background-color: white;
+
+    color: var(--selected-inquiry-background-color);
+    font-weight: bold;
+    border: 2px solid var(--selected-inquiry-background-color);
+    border-radius: 100px;
+    box-shadow: 0 8px 6px -6px var(--selected-inquiry-background-color);
+    transition: .1s;
+}
+
+.add-turnaround-button:hover{
+    cursor: pointer;
+    background-color: var(--selected-inquiry-background-color);
+    color: white;
+}
+
+.example{
+    font-size: 1.2rem;
+    border-top: 1px dotted rgb(219, 219, 219);
+    padding: 1rem 1rem 1rem 0rem;
+}
+
+.example:hover{
+    color: var(--example-hover-color);
+}

@@ -28,7 +28,7 @@ export default function InquirySelector({ allInquiries }) {
                 }
             </div>
             <button
-                className='button'
+                className='add-turnaround-button'
                 onClick={() => addInquiry()}
             >NEW INQUIRY</button>
 

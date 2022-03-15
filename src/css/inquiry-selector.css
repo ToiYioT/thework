@@ -9,11 +9,17 @@
 
 .inquiry-card-container{
 
-    width: 200px;
+    width: 300px;
     min-height: 100px;
     padding: 1rem;
     border: 1px solid black;
     border-top: none;
+    font-size: 1.2rem;
+}
+
+.inquiry-card-container:hover{
+    background-color: var(--faded-color);
+    color: var(--selected-inquiry-background-color);
 }
 
 .selected-card{
@@ -21,6 +27,10 @@
     color: var(--selected-inquiry-text-color);
 }
 
+.selected-card:hover{
+    background-color: var(--selected-inquiry-background-color);
+    color: var(--selected-inquiry-text-color);
+}
 .search-bar-container{
     margin-bottom: 1rem;
     padding: 1rem;

@@ -1,15 +1,18 @@
 @import-normalize;
-@import 'inquiry-view.css';
+@import 'questions-view.css';
+@import 'turnarounds-view.css';
 @import 'inquiry-selector.css';
 
 :root{
   --accent-color : rgb(185, 125, 185);
-  --faded-color : rgb(151, 151, 151);
+  --faded-color : rgb(219, 219, 219);
   --selected-inquiry-background-color: rgb(122, 95, 124);
   --selected-inquiry-text-color: rgb(255, 255, 255);
   --background-color: rgb(224, 212, 219);
   --question-color: rgb(255, 255, 255);
   --text-color: rgb(80, 80, 80);
+  --red-accent-color: rgb(255, 60, 60);
+  --example-hover-color: rgb(0, 0, 0);
 }
 
 * {
@@ -43,10 +46,13 @@ html, body{
   border: 2px solid transparent;
   padding: 1rem;
   margin-left: 1rem;
+  box-shadow: 0 4px 6px -6px black;
+  transition: .1s;
 }
 
 .delete-button:hover{
-  border: 2px solid red;
+  background-color: var(--red-accent-color);
+  color: white;
   cursor: pointer;
 }
 
