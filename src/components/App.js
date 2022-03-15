@@ -1,4 +1,4 @@
-import { createContext, useEffect, useLayoutEffect, useState } from "react";
+import { createContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { v4 as uuidv4 } from "uuid"
 import '../css/app.css'
@@ -12,14 +12,15 @@ export default function App() {
   const [data, setData] = useLocalStorage("thework-data", [getNewInquiry()]);
   const [selectedInquiryId, setSelectedInquiryId] = useState(null);
 
-  // useLayoutEffect(() => {
+  const undoHistory = useRef([data]);
 
-  //   for (let elem of document.getElementsByTagName("textarea")) {
-
-  //     elem.style.height = 0;
-  //     elem.style.height = elem.scrollHeight + 'px';
-  //   }
-  // });
+  useEffect(() => {
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.key === 'z') {
+        undo();
+      }
+    });
+  }, []);
 
   const selectedInquiry = data.filter(inquiry => inquiry.id === selectedInquiryId)[0];
 
@@ -31,6 +32,8 @@ export default function App() {
     deleteInquiry,
     getNewTurnaround,
     getNewExample,
+    saveUndoHistory,
+    undo
   }
 
   function handleSetSelectedInquiryId(id) {
@@ -63,6 +66,18 @@ export default function App() {
     });
   }
 
+  function saveUndoHistory() {
+    undoHistory.current.push(data);
+  }
+
+  function undo() {
+    const lastState = undoHistory.current.pop();
+    if (lastState) {
+
+      setData(lastState);
+    }
+  }
+
   return (
     <InquiryContext.Provider value={contextValue}>
       <div className="main-container">
@@ -82,7 +97,6 @@ export default function App() {
         }
 
       </div>
-
     </InquiryContext.Provider>
   );
 }
