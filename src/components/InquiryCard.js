@@ -17,7 +17,9 @@ export default function InquiryCard({ inquiry }) {
                 : "inquiry-card-container"}
             onClick={() => handleSetSelectedInquiryId(inquiry.id)}
         >
-            <div className="inquiry-card-thought-container">
+            <div className="inquiry-card-thought-container"
+                placeholder='Empty'
+            >
                 {inquiry.thought}
             </div>
         </div>

@@ -16,10 +16,13 @@ export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
         )
     })
 
-    const { getNewTurnaround } = useContext(InquiryContext);
+    const { getNewTurnaround, setFocusedElementId } = useContext(InquiryContext);
 
     function addTurnaround() {
-        const newTurnarounds = [...turnaroundData, getNewTurnaround()];
+
+        const newTurnaround = getNewTurnaround();
+        const newTurnarounds = [...turnaroundData, newTurnaround];
+        setFocusedElementId(newTurnaround.id);
         updateInquiry({ turnarounds: newTurnarounds });
     }
 

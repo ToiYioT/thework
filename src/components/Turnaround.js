@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton'
+import TurnaroundExample from './TurnaroundExample';
 
 export default function Turnaround(props) {
 
@@ -11,7 +12,18 @@ export default function Turnaround(props) {
         changeTurnaround,
     } = props;
 
-    const { getNewExample } = useContext(InquiryContext);
+    const textAreaRef = useRef();
+    const {
+        getNewExample,
+        focusedElementId,
+        setFocusedElementId } = useContext(InquiryContext);
+
+    useEffect(() => {
+        if (focusedElementId.current === turnaround.id) {
+            textAreaRef.current.focus();
+            setFocusedElementId(null);
+        }
+    });
 
     const examples = turnaround.examples.map(example => {
 
@@ -20,20 +32,12 @@ export default function Turnaround(props) {
             updateExample(example.id, newExample);
         }
 
-        return (
-            <div className="turnaround-example-container" key={example.id}>
-                <TextareaAutosize
-                    className='input-field example'
-                    defaultValue={example.example}
-                    onChange={(e) => handleChange({ example: e.target.value })}
-                />
-                <button
-                    className="delete-example-button"
-                    onClick={() => deleteExample(example.id)}
-                >
-                    X
-                </button>
-            </div>)
+        return <TurnaroundExample
+            key={example.id}
+            example={example}
+            handleChange={handleChange}
+            deleteExample={deleteExample}
+        />
     });
 
     function updateTurnaround(change) {
@@ -43,7 +47,10 @@ export default function Turnaround(props) {
     }
 
     function addExample() {
-        const newExamples = [...turnaround.examples, getNewExample()];
+        const newExample = getNewExample();
+        const newExamples = [...turnaround.examples, newExample];
+        setFocusedElementId(newExample.id);
+
         updateTurnaround({ examples: newExamples });
     }
 
@@ -71,6 +78,8 @@ export default function Turnaround(props) {
                     className='question input-field'
                     defaultValue={turnaround.turnaround}
                     onChange={(e) => updateTurnaround({ turnaround: e.target.value })}
+                    ref={textAreaRef}
+                    placeholder="Turn that around.."
                 />
                 <DeleteButton onClick={() => deleteTurnaround(turnaround.id)} />
             </div>

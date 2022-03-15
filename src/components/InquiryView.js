@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton';
@@ -15,8 +15,19 @@ export default function InquiryView(props) {
         whoWouldYouBe,
     } = props.inquiryData;
 
-    const { setInquiry, deleteInquiry } = useContext(InquiryContext);
+    const { setInquiry,
+        deleteInquiry,
+        focusedElementId,
+        setFocusedElementId } = useContext(InquiryContext);
 
+    const thoughtRef = useRef();
+
+    useEffect(() => {
+        if (focusedElementId.current === props.inquiryData.id) {
+            thoughtRef.current.focus();
+            setFocusedElementId(null);
+        }
+    });
 
     function updateInquiry(change) {
         const newInquiry = { ...props.inquiryData, ...change };
@@ -30,6 +41,8 @@ export default function InquiryView(props) {
                     className='thought-title'
                     defaultValue={thought}
                     onChange={e => updateInquiry({ thought: e.target.value })}
+                    ref={thoughtRef}
+                    placeholder="Thought Appears.."
                 />
 
                 <DeleteButton onClick={() => deleteInquiry(props.inquiryData.id)} />
@@ -40,21 +53,26 @@ export default function InquiryView(props) {
                     title="Is that true?"
                     answer={isThatTrue}
                     onChange={e => updateInquiry({ isThatTrue: e.target.value })}
+                    placeholder="What's the reality the situation?  Reality is what is in front of you.  Who's business is it?  Can I really know what's best?"
                 />
                 <Question
                     title="Are you absolutely sure that's true?"
                     answer={areYouSure}
                     onChange={e => updateInquiry({ areYouSure: e.target.value })}
+                    placeholder="Do you really know that you feel hurt because of that? Might it be possible that you'd feel differently with the same situation?"
                 />
                 <Question
                     title="How do you react when you have that thought?"
                     answer={howDoYouReact}
                     onChange={e => updateInquiry({ howDoYouReact: e.target.value })}
+                    placeholder="Can you find one peaceful reason to keep the thought?"
                 />
                 <Question
                     title="Who would you be without that thought?"
                     answer={whoWouldYouBe}
                     onChange={e => updateInquiry({ whoWouldYouBe: e.target.value })}
+                    placeholder="Close your eyes. How do you feel about the situation without your story?
+Which do you prefer? Which feels kinder?"
                 />
             </div>
 

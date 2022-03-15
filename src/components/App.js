@@ -13,6 +13,7 @@ export default function App() {
   const [selectedInquiryId, setSelectedInquiryId] = useState(null);
 
   const undoHistory = useRef([data]);
+  const focusedElementId = useRef(null);
 
   useEffect(() => {
     document.addEventListener('keydown', function (event) {
@@ -30,10 +31,13 @@ export default function App() {
     handleSetSelectedInquiryId,
     selectedInquiryId,
     deleteInquiry,
+    getNewInquiry,
     getNewTurnaround,
     getNewExample,
     saveUndoHistory,
-    undo
+    undo,
+    setFocusedElementId,
+    focusedElementId,
   }
 
   function handleSetSelectedInquiryId(id) {
@@ -51,8 +55,8 @@ export default function App() {
     });
   }
 
-  function addInquiry() {
-    const newInquiry = getNewInquiry();
+  function addInquiry(inquiry) {
+    const newInquiry = inquiry;
     setData(prevData => {
       return [...prevData, newInquiry];
     });
@@ -66,9 +70,14 @@ export default function App() {
     });
   }
 
+  function setFocusedElementId(id) {
+    focusedElementId.current = id;
+  }
+
   function saveUndoHistory() {
     undoHistory.current.push(data);
   }
+
 
   function undo() {
     const lastState = undoHistory.current.pop();
@@ -106,14 +115,12 @@ export default function App() {
 function getNewInquiry() {
   const newInqury = {
     id: uuidv4(),
-    thought: "New Thought",
+    thought: "",
     isThatTrue: "",
     areYouSure: "",
     howDoYouReact: "",
     whoWouldYouBe: "",
-    turnarounds: [
-      getNewTurnaround(),
-    ]
+    turnarounds: []
   }
 
   return newInqury;
@@ -122,8 +129,10 @@ function getNewInquiry() {
 function getNewTurnaround() {
   const newTurnaround = {
     id: uuidv4(),
-    turnaround: "New Turnaround",
-    examples: []
+    turnaround: "",
+    examples: [
+      getNewExample()
+    ]
   }
 
   return newTurnaround;
@@ -132,7 +141,7 @@ function getNewTurnaround() {
 function getNewExample() {
   const newExample = {
     id: uuidv4(),
-    example: "New example",
+    example: "",
   }
 
   return newExample;

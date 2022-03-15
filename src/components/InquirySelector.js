@@ -5,7 +5,15 @@ import InquiryCard from './InquiryCard'
 
 export default function InquirySelector({ allInquiries }) {
 
-    const { addInquiry } = useContext(InquiryContext);
+    const { addInquiry,
+        getNewInquiry,
+        setFocusedElementId } = useContext(InquiryContext);
+
+    function handleAddInquiry() {
+        const newInquiry = getNewInquiry();
+        setFocusedElementId(newInquiry.id);
+        addInquiry(newInquiry);
+    }
 
     return (
         <div className="side-bar-container">
@@ -29,7 +37,7 @@ export default function InquirySelector({ allInquiries }) {
             </div>
             <button
                 className='add-turnaround-button'
-                onClick={() => addInquiry()}
+                onClick={handleAddInquiry}
             >NEW INQUIRY</button>
 
         </div>

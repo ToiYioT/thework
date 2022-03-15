@@ -47,6 +47,9 @@
     border: none;
     outline: none;
     color: var(--text-color);
+
+    /* ************************* */
+    overflow: hidden;
 }
 
 .question{
