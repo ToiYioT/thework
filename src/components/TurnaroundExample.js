@@ -2,7 +2,14 @@ import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
 import { InquiryContext } from './App';
 
-export default function TurnaroundExample({ example, handleChange, deleteExample }) {
+export default function TurnaroundExample(props) {
+
+    const {
+        example,
+        handleChange,
+        deleteExample,
+        addExample
+    } = props;
 
     const textAreaRef = useRef();
     const {
@@ -15,6 +22,14 @@ export default function TurnaroundExample({ example, handleChange, deleteExample
             setFocusedElementId(null);
         }
     });
+
+    useEffect(() => {
+        textAreaRef.current.addEventListener('keydown', function (event) {
+            if (event.key === "Backspace" && textAreaRef.current.value.length == 0) {
+                deleteExample(example.id);
+            }
+        });
+    }, []);
 
     return (
         <div className="turnaround-example-container" key={example.id}>

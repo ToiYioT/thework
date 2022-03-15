@@ -37,6 +37,7 @@ export default function Turnaround(props) {
             example={example}
             handleChange={handleChange}
             deleteExample={deleteExample}
+            addExample={addExample}
         />
     });
 
