@@ -70,6 +70,14 @@ html, body{
   background-color: var(--red-accent-color);
   color: white;
   cursor: pointer;
+  transform: scale(1.1);
+}
+
+.delete-button:active{
+  background-color: var(--red-accent-color);
+  color: white;
+  cursor: pointer;
+  transform: scale(.9);
 }
 
 .no-inquiry-selected{

@@ -29,14 +29,6 @@ export default function TurnaroundExample(props) {
 
     return (
         <div className="turnaround-example-container" key={example.id}>
-            <TextareaAutosize
-                className='input-field example'
-                defaultValue={example.example}
-                onChange={(e) => handleChange({ example: e.target.value })}
-                placeholder="Example"
-                ref={textAreaRef}
-                onKeyDown={keydownListener}
-            />
             <button
                 className="delete-example-button"
                 onClick={() => {
@@ -45,5 +37,13 @@ export default function TurnaroundExample(props) {
             >
                 X
             </button>
+            <TextareaAutosize
+                className='input-field example'
+                defaultValue={example.example}
+                onChange={(e) => handleChange({ example: e.target.value })}
+                placeholder="Example"
+                ref={textAreaRef}
+                onKeyDown={keydownListener}
+            />
         </div>)
 }

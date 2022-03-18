@@ -30,7 +30,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
+
 
 .examples-container{
     margin: 2rem 1rem;
@@ -61,6 +63,16 @@
     font-size: 1.2rem;
     font-weight: bold;
     padding: .3rem .6rem;
+
+    position: absolute;
+    right: 0;
+    top: auto;
+    z-index: 1;
+}
+
+.delete-example-button:hover + textarea{
+    color: var(--red-accent-color);
+    text-decoration: line-through;
 }
 
 .add-example-button:hover, .delete-example-button:hover{
@@ -92,8 +104,4 @@
     font-size: 1.2rem;
     border-top: 1px dotted rgb(219, 219, 219);
     padding: 1rem 1rem 1rem 0rem;
-}
-
-.example:hover{
-    color: var(--example-hover-color);
 }
