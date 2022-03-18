@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
+import { TransitionGroup } from 'react-transition-group';
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton'
 import TurnaroundExample from './TurnaroundExample';
+import { CSSTransition } from 'react-transition-group';
+
 
 export default function Turnaround(props) {
 
@@ -26,13 +29,21 @@ export default function Turnaround(props) {
             updateExample(example.id, newExample);
         }
 
-        return <TurnaroundExample
-            key={example.id}
-            example={example}
-            handleChange={handleChange}
-            deleteExample={deleteExample}
-            addExampleAfter={addExampleAfter}
-        />
+        return (
+            <CSSTransition
+                key={example.id}
+                timeout={300}
+                classNames="fade-item"
+            >
+                <TurnaroundExample
+                    key={example.id}
+                    example={example}
+                    handleChange={handleChange}
+                    deleteExample={deleteExample}
+                    addExampleAfter={addExampleAfter}
+                />
+
+            </CSSTransition>)
     });
 
     function updateTurnaround(change) {
@@ -89,9 +100,13 @@ export default function Turnaround(props) {
                 <DeleteButton onClick={() => deleteTurnaround(turnaround.id)} />
             </div>
 
-            <div className="examples-container">
 
-                {exampleElements}
+            <div className="examples-container">
+                <TransitionGroup>
+                    {exampleElements}
+
+                </TransitionGroup>
+
                 <button
                     className='add-example-button'
                     onClick={addExample}
@@ -99,6 +114,6 @@ export default function Turnaround(props) {
                     +
                 </button>
             </div>
-        </div>
+        </div >
     )
 }

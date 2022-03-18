@@ -11,7 +11,8 @@
 
 .questions-container{
     margin: auto;
-    max-width: 600px;
+    /* max-width: 600px; */
+    width: clamp(50%, 600px, 100%);
 }
 
 .question-container{

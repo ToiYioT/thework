@@ -2,17 +2,24 @@
 import React, { useContext } from 'react'
 import { InquiryContext } from './App'
 import Turnaround from './Turnaround'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
 
     const turnarounds = turnaroundData.map(turnaround => {
         return (
-            <Turnaround
+            <CSSTransition
                 key={turnaround.id}
-                turnaround={turnaround}
-                deleteTurnaround={deleteTurnaround}
-                changeTurnaround={changeTurnaround}
-            />
+                timeout={500}
+                classNames="fade-item"
+            >
+                <Turnaround
+                    key={turnaround.id}
+                    turnaround={turnaround}
+                    deleteTurnaround={deleteTurnaround}
+                    changeTurnaround={changeTurnaround}
+                />
+            </CSSTransition>
         )
     })
 
@@ -48,8 +55,9 @@ export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
             <div className="turnaround-title">Turnarounds</div>
 
             <div className="turnarounds-container">
-
-                {turnarounds}
+                <TransitionGroup>
+                    {turnarounds}
+                </TransitionGroup>
             </div>
 
             <button

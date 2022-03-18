@@ -24,6 +24,22 @@ html, body{
   margin: 0;
 }
 
+.fade-item-enter {
+  opacity: 0;
+}
+.fade-item-enter-active {
+  opacity: 1;
+  transition:  200ms ;
+}
+.fade-item-exit {
+  opacity: 1;
+}
+.fade-item-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition:  500ms ;
+}
+
 /* textarea{
   overflow-x: auto;
   white-space: nowrap;
