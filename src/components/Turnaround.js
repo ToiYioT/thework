@@ -13,19 +13,13 @@ export default function Turnaround(props) {
     } = props;
 
     const textAreaRef = useRef();
-    const {
-        getNewExample,
-        focusedElementId,
-        setFocusedElementId } = useContext(InquiryContext);
+    const { getNewExample, } = useContext(InquiryContext);
 
     useEffect(() => {
-        if (focusedElementId.current === turnaround.id) {
-            textAreaRef.current.focus();
-            setFocusedElementId(null);
-        }
-    });
+        textAreaRef.current.focus();
+    }, []);
 
-    const examples = turnaround.examples.map(example => {
+    const exampleElements = turnaround.examples.map(example => {
 
         function handleChange(change) {
             const newExample = { ...example, ...change }
@@ -37,7 +31,7 @@ export default function Turnaround(props) {
             example={example}
             handleChange={handleChange}
             deleteExample={deleteExample}
-            addExample={addExample}
+            addExampleAfter={addExampleAfter}
         />
     });
 
@@ -47,10 +41,20 @@ export default function Turnaround(props) {
         changeTurnaround(turnaround.id, newTurnaround);
     }
 
+    // adds a new example at the end of the list
     function addExample() {
         const newExample = getNewExample();
         const newExamples = [...turnaround.examples, newExample];
-        setFocusedElementId(newExample.id);
+
+        updateTurnaround({ examples: newExamples });
+    }
+
+    function addExampleAfter(id) {
+
+        const newExample = getNewExample();
+        const newExamples = [...turnaround.examples];
+        const idIndex = newExamples.findIndex(element => element.id === id);
+        newExamples.splice(idIndex + 1, 0, newExample);
 
         updateTurnaround({ examples: newExamples });
     }
@@ -87,7 +91,7 @@ export default function Turnaround(props) {
 
             <div className="examples-container">
 
-                {examples}
+                {exampleElements}
                 <button
                     className='add-example-button'
                     onClick={addExample}
@@ -95,8 +99,6 @@ export default function Turnaround(props) {
                     +
                 </button>
             </div>
-
-
         </div>
     )
 }
