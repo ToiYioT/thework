@@ -27,6 +27,7 @@ export default function Turnaround(props) {
     useEffect(() => {
         if (focusedElementId.current == turnaround.id) {
             textAreaRef.current.focus();
+            setFocusedElementId(null);
         }
     }, []);
 
@@ -59,6 +60,7 @@ export default function Turnaround(props) {
                             handleChange={handleChange}
                             deleteExample={deleteExample}
                             addExampleAfter={addExampleAfter}
+                            focusPreviousExample={focusPreviousExample}
                         />
                     )}
 
@@ -98,6 +100,16 @@ export default function Turnaround(props) {
             return example.id !== id;
         })
         updateTurnaround({ examples: newExamples });
+    }
+
+    function focusPreviousExample(id) {
+        const idIndex = turnaround.examples.findIndex(
+            example => example.id === id
+        );
+        const newFocusedId = idIndex > 0 ? turnaround.examples[idIndex - 1].id
+            : null;
+
+        setFocusedElementId(newFocusedId);
     }
 
     function updateExample(id, newExample) {

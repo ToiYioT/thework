@@ -88,7 +88,7 @@ export default function App() {
   }
 
   function handleDragEnd(result) {
-    console.log(result);
+
     if (result.destination == null) return;
 
     if (result.type === "examples") {

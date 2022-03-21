@@ -9,6 +9,7 @@ export default function TurnaroundExample(props) {
         handleChange,
         deleteExample,
         addExampleAfter,
+        focusPreviousExample,
 
         innerRef,
         draggableProps,
@@ -17,18 +18,24 @@ export default function TurnaroundExample(props) {
 
     const textAreaRef = useRef();
 
-    const { focusedElementId } = useContext(InquiryContext);
+    const { focusedElementId, setFocusedElementId } = useContext(InquiryContext);
 
 
     useEffect(() => {
         if (focusedElementId.current === example.id) {
             textAreaRef.current.focus();
+            textAreaRef.current.selectionStart = textAreaRef.current.value.length;
+            setFocusedElementId(null);
         }
-    }, []);
+    });
 
     function keydownListener(event) {
+        if (event.repeat) return;
+
         if (event.key === "Backspace" && textAreaRef.current.value.length == 0) {
+            focusPreviousExample(example.id);
             deleteExample(example.id);
+
             event.preventDefault();
         }
         if (event.key === "Enter") {
