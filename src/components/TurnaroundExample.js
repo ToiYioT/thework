@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
+import { InquiryContext } from './App';
 
 export default function TurnaroundExample(props) {
 
@@ -16,8 +17,13 @@ export default function TurnaroundExample(props) {
 
     const textAreaRef = useRef();
 
+    const { focusedElementId } = useContext(InquiryContext);
+
+
     useEffect(() => {
-        textAreaRef.current.focus();
+        if (focusedElementId.current === example.id) {
+            textAreaRef.current.focus();
+        }
     }, []);
 
     function keydownListener(event) {

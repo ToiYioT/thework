@@ -21,10 +21,13 @@ export default function Turnaround(props) {
     } = props;
 
     const textAreaRef = useRef();
-    const { getNewExample, } = useContext(InquiryContext);
+    const { getNewExample, focusedElementId, setFocusedElementId
+    } = useContext(InquiryContext);
 
     useEffect(() => {
-        textAreaRef.current.focus();
+        if (focusedElementId.current == turnaround.id) {
+            textAreaRef.current.focus();
+        }
     }, []);
 
     const exampleElements = turnaround.examples.map((example, index) => {
@@ -75,6 +78,7 @@ export default function Turnaround(props) {
         const newExample = getNewExample();
         const newExamples = [...turnaround.examples, newExample];
 
+        setFocusedElementId(newExample.id);
         updateTurnaround({ examples: newExamples });
     }
 
@@ -85,6 +89,7 @@ export default function Turnaround(props) {
         const idIndex = newExamples.findIndex(element => element.id === id);
         newExamples.splice(idIndex + 1, 0, newExample);
 
+        setFocusedElementId(newExample.id);
         updateTurnaround({ examples: newExamples });
     }
 
