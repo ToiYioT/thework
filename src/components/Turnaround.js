@@ -108,7 +108,10 @@ export default function Turnaround(props) {
         <div className="turnaround-container"
             ref={innerRef}
             {...draggableProps}
-            {...dragHandleProps}>
+        >
+            <div className="turnaround-handle"
+                {...dragHandleProps}
+            >. . .</div>
 
 
             <div className="turnaround-title-container">

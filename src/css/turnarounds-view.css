@@ -18,6 +18,17 @@
     box-shadow: 0 8px 6px -6px var(--selected-inquiry-background-color);
 
     overflow: hidden;
+    position: relative;
+}
+
+.turnaround-handle{
+    position: absolute;
+    color: var(--faded-color);
+    top: 0;
+    left: 50%;
+}
+.turnaround-handle:hover{
+    color: var(--text-color);
 }
 
 
