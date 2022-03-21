@@ -3,22 +3,36 @@ import React, { useContext } from 'react'
 import { InquiryContext } from './App'
 import Turnaround from './Turnaround'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 
 export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
 
-    const turnarounds = turnaroundData.map(turnaround => {
+    const turnarounds = turnaroundData.map((turnaround, index) => {
         return (
             <CSSTransition
                 key={turnaround.id}
                 timeout={500}
                 classNames="fade-item"
             >
-                <Turnaround
+                <Draggable
                     key={turnaround.id}
-                    turnaround={turnaround}
-                    deleteTurnaround={deleteTurnaround}
-                    changeTurnaround={changeTurnaround}
-                />
+                    draggableId={turnaround.id}
+                    index={index}
+                >
+                    {(provided) => (
+                        <Turnaround
+                            innerRef={provided.innerRef}
+                            draggableProps={provided.draggableProps}
+                            dragHandleProps={provided.dragHandleProps}
+
+                            key={turnaround.id}
+                            turnaround={turnaround}
+                            deleteTurnaround={deleteTurnaround}
+                            changeTurnaround={changeTurnaround}
+                        />
+                    )}
+
+                </Draggable>
             </CSSTransition>
         )
     })
@@ -54,11 +68,20 @@ export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
         <div className="turnaround-section-container">
             <div className="turnaround-title">Turnarounds</div>
 
-            <div className="turnarounds-container">
-                <TransitionGroup>
-                    {turnarounds}
-                </TransitionGroup>
-            </div>
+            <Droppable droppableId="turnarounds" type='turnarounds'>
+                {(provided) => (
+                    <div
+                        className="turnarounds-container"
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}>
+
+                        <TransitionGroup>
+                            {turnarounds}
+                            {provided.placeholder}
+                        </TransitionGroup>
+                    </div>
+                )}
+            </Droppable>
 
             <button
                 className='add-turnaround-button'

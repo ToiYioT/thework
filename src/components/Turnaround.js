@@ -5,6 +5,7 @@ import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton'
 import TurnaroundExample from './TurnaroundExample';
 import { CSSTransition } from 'react-transition-group';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 
 export default function Turnaround(props) {
@@ -13,6 +14,10 @@ export default function Turnaround(props) {
         turnaround,
         deleteTurnaround,
         changeTurnaround,
+
+        innerRef,
+        draggableProps,
+        dragHandleProps
     } = props;
 
     const textAreaRef = useRef();
@@ -22,7 +27,7 @@ export default function Turnaround(props) {
         textAreaRef.current.focus();
     }, []);
 
-    const exampleElements = turnaround.examples.map(example => {
+    const exampleElements = turnaround.examples.map((example, index) => {
 
         function handleChange(change) {
             const newExample = { ...example, ...change }
@@ -35,13 +40,26 @@ export default function Turnaround(props) {
                 timeout={300}
                 classNames="fade-item"
             >
-                <TurnaroundExample
+                <Draggable
                     key={example.id}
-                    example={example}
-                    handleChange={handleChange}
-                    deleteExample={deleteExample}
-                    addExampleAfter={addExampleAfter}
-                />
+                    draggableId={example.id}
+                    index={index}
+                >
+                    {(provided) => (
+                        <TurnaroundExample
+                            innerRef={provided.innerRef}
+                            draggableProps={provided.draggableProps}
+                            dragHandleProps={provided.dragHandleProps}
+
+                            key={example.id}
+                            example={example}
+                            handleChange={handleChange}
+                            deleteExample={deleteExample}
+                            addExampleAfter={addExampleAfter}
+                        />
+                    )}
+
+                </Draggable>
 
             </CSSTransition>)
     });
@@ -87,7 +105,11 @@ export default function Turnaround(props) {
 
 
     return (
-        <div className="turnaround-container">
+        <div className="turnaround-container"
+            ref={innerRef}
+            {...draggableProps}
+            {...dragHandleProps}>
+
 
             <div className="turnaround-title-container">
                 <TextareaAutosize
@@ -100,20 +122,27 @@ export default function Turnaround(props) {
                 <DeleteButton onClick={() => deleteTurnaround(turnaround.id)} />
             </div>
 
+            <Droppable droppableId={turnaround.id} type="examples">
+                {(provided) => (
+                    <div
+                        className="examples-container"
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}>
 
-            <div className="examples-container">
-                <TransitionGroup>
-                    {exampleElements}
+                        <TransitionGroup>
+                            {exampleElements}
+                            {provided.placeholder}
+                        </TransitionGroup>
 
-                </TransitionGroup>
-
-                <button
-                    className='add-example-button'
-                    onClick={addExample}
-                >
-                    +
-                </button>
-            </div>
+                        <button
+                            className='add-example-button'
+                            onClick={addExample}
+                        >
+                            +
+                        </button>
+                    </div>
+                )}
+            </Droppable>
         </div >
     )
 }

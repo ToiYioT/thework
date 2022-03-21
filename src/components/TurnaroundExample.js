@@ -8,6 +8,10 @@ export default function TurnaroundExample(props) {
         handleChange,
         deleteExample,
         addExampleAfter,
+
+        innerRef,
+        draggableProps,
+        dragHandleProps
     } = props;
 
     const textAreaRef = useRef();
@@ -28,7 +32,14 @@ export default function TurnaroundExample(props) {
     }
 
     return (
-        <div className="turnaround-example-container" key={example.id}>
+        <div className="turnaround-example-container"
+            key={example.id}
+            ref={innerRef}
+            {...draggableProps}
+        >
+            <div className="example-handle" {...dragHandleProps}>
+                O
+            </div>
             <button
                 className="delete-example-button"
                 onClick={() => {
