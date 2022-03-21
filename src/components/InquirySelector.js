@@ -22,7 +22,8 @@ export default function InquirySelector({ allInquiries }) {
             />
         }
     });
-    const noMatch = filteredInquiries.every(undefindeTest);
+    const noMatch = filteredInquiries.every(undefindeTest) &&
+        allInquiries.length > 0;
 
     function handleAddInquiry() {
         const newInquiry = getNewInquiry();
