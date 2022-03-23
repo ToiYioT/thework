@@ -1,14 +1,16 @@
 
 import React, { useContext, useRef, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
+import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
 import InquiryCard from './InquiryCard'
 
 export default function InquirySelector({ allInquiries }) {
 
-    const { addInquiry,
-        getNewInquiry,
-        setFocusedElementId } = useContext(InquiryContext);
+    const { setFocusedElementId,
+        handleSetSelectedInquiryId
+    } = useContext(InquiryContext);
+    const { addInquiry, getNewInquiry } = useTheWorkData();
 
     const [filterText, setFilterText] = useState("");
     const searchBarRef = useRef();
@@ -28,6 +30,7 @@ export default function InquirySelector({ allInquiries }) {
     function handleAddInquiry() {
         const newInquiry = getNewInquiry();
         setFocusedElementId(newInquiry.id);
+        handleSetSelectedInquiryId(newInquiry.id);
         addInquiry(newInquiry);
 
         searchBarRef.current.value = "";

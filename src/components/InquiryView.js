@@ -1,6 +1,7 @@
 
 import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
+import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton';
 import Question from './Question';
@@ -15,10 +16,11 @@ export default function InquiryView(props) {
         whoWouldYouBe,
     } = props.inquiryData;
 
-    const { setInquiry,
-        deleteInquiry,
+    const {
         focusedElementId,
         setFocusedElementId } = useContext(InquiryContext);
+
+    const { setInquiry, deleteInquiry } = useTheWorkData();
 
     const thoughtRef = useRef();
 

@@ -6,6 +6,7 @@ import DeleteButton from './DeleteButton'
 import TurnaroundExample from './TurnaroundExample';
 import { CSSTransition } from 'react-transition-group';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import useTheWorkData from '../contexts/TheWorkContext';
 
 
 export default function Turnaround(props) {
@@ -21,8 +22,9 @@ export default function Turnaround(props) {
     } = props;
 
     const textAreaRef = useRef();
-    const { getNewExample, focusedElementId, setFocusedElementId
+    const { focusedElementId, setFocusedElementId
     } = useContext(InquiryContext);
+    const { getNewExample } = useTheWorkData();
 
     useEffect(() => {
         if (focusedElementId.current == turnaround.id) {

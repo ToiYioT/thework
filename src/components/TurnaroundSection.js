@@ -4,6 +4,7 @@ import { InquiryContext } from './App'
 import Turnaround from './Turnaround'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
+import useTheWorkData from '../contexts/TheWorkContext'
 
 export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
 
@@ -37,7 +38,8 @@ export default function TurnaroundSection({ turnaroundData, updateInquiry }) {
         )
     })
 
-    const { getNewTurnaround, setFocusedElementId } = useContext(InquiryContext);
+    const { setFocusedElementId } = useContext(InquiryContext);
+    const { getNewTurnaround } = useTheWorkData();
 
     function addTurnaround() {
 
