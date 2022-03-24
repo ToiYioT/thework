@@ -33,11 +33,27 @@
     flex: 1;
     max-height: 100vh;
     overflow-y: scroll;
+
+    position: absolute;
+    right: auto;
+    left: auto;
+    animation: fadeInAnimation .2s;
+}
+
+@keyframes fadeInAnimation {
+  from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  to {
+      opacity: 1;
+      transform: scale(1);
+    }
 }
 
 
 .answer{
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: 1rem;
 }
 
@@ -55,12 +71,12 @@
 }
 
 .question{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--selected-inquiry-background-color);
     font-weight: bold;
 }
 .thought-title{
-    font-size: 2rem;
+    font-size: 1.4rem;
     color: white;
     background-color: var(--selected-inquiry-background-color);
     resize: none;

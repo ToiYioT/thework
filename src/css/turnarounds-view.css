@@ -55,7 +55,7 @@
 }
 
 .turnaround-title{
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     background-color: var(--selected-inquiry-background-color);
     color: white;
@@ -71,12 +71,12 @@
 }
 
 .add-example-button{
-    font-size: 2rem;
+    font-size: 1.4rem;
     padding: 0 .5rem;
 }
 
 .delete-example-button{
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     padding: .3rem .6rem;
 
@@ -117,7 +117,7 @@
 }
 
 .example{
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-top: 1px dotted rgb(219, 219, 219);
     padding: 1rem 1rem 1rem 0rem;
 }

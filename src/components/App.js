@@ -1,11 +1,9 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { v4 as uuidv4 } from "uuid"
 import useTheWorkData from "../contexts/TheWorkContext";
 import '../css/app.css'
-import useLocalStorage from "../hooks/useLocalStorage";
-import InquirySelector from "./InquirySelector";
 import InquiryView from "./InquiryView";
+import InquirySelector from './InquirySelector';
 
 export const InquiryContext = createContext();
 
@@ -39,6 +37,10 @@ export default function App() {
     undo,
     setFocusedElementId,
     focusedElementId,
+  }
+
+  function closeInquiryView() {
+    setSelectedInquiryId(null);
   }
 
   function handleSetSelectedInquiryId(id) {
@@ -115,24 +117,20 @@ export default function App() {
   return (
     <InquiryContext.Provider value={contextValue}>
       <div className="main-container">
-        <InquirySelector allInquiries={data} />
 
+        <InquirySelector />
         {selectedInquiry &&
+
           <DragDropContext onDragEnd={handleDragEnd}>
             <InquiryView
               inquiryData={selectedInquiry}
               key={selectedInquiry.id}
+              closeView={closeInquiryView}
             />
 
           </DragDropContext>
-        }
-        {
-          !selectedInquiry &&
-          <div className="no-inquiry-selected">
-            {data.length > 0 ? "Select an inquiry!" : "Create a new Inquiry!"}
-          </div>
-        }
 
+        }
       </div>
     </InquiryContext.Provider>
   );

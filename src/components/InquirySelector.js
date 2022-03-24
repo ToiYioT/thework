@@ -5,17 +5,17 @@ import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
 import InquiryCard from './InquiryCard'
 
-export default function InquirySelector({ allInquiries }) {
+export default function InquirySelector() {
 
     const { setFocusedElementId,
         handleSetSelectedInquiryId
     } = useContext(InquiryContext);
-    const { addInquiry, getNewInquiry } = useTheWorkData();
+    const { addInquiry, getNewInquiry, data } = useTheWorkData();
 
     const [filterText, setFilterText] = useState("");
     const searchBarRef = useRef();
 
-    const filteredInquiries = allInquiries.slice(0).reverse().map(inquiry => {
+    const filteredInquiries = data.slice(0).reverse().map(inquiry => {
 
         if (inquiry.thought.includes(filterText)) {
             return <InquiryCard
@@ -25,7 +25,7 @@ export default function InquirySelector({ allInquiries }) {
         }
     });
     const noMatch = filteredInquiries.every(undefindeTest) &&
-        allInquiries.length > 0;
+        data.length > 0;
 
     function handleAddInquiry() {
         const newInquiry = getNewInquiry();

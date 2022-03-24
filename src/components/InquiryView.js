@@ -3,9 +3,9 @@ import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
 import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App';
-import DeleteButton from './DeleteButton';
 import Question from './Question';
 import TurnaroundSection from './TurnaroundSection';
+import { Button } from '@mantine/core';
 
 export default function InquiryView(props) {
     const {
@@ -14,13 +14,15 @@ export default function InquiryView(props) {
         areYouSure,
         howDoYouReact,
         whoWouldYouBe,
+
     } = props.inquiryData;
+
 
     const {
         focusedElementId,
         setFocusedElementId } = useContext(InquiryContext);
 
-    const { setInquiry, deleteInquiry } = useTheWorkData();
+    const { setInquiry } = useTheWorkData();
 
     const thoughtRef = useRef();
 
@@ -46,8 +48,11 @@ export default function InquiryView(props) {
                     ref={thoughtRef}
                     placeholder="Thought Appears.."
                 />
-
-                <DeleteButton onClick={() => deleteInquiry(props.inquiryData.id)} />
+                <Button
+                    variant="gradient"
+                    gradient={{ from: 'orange', to: 'red' }}
+                    onClick={() => props.closeView()}
+                >X</Button>
             </div>
 
             <div className="questions-container">

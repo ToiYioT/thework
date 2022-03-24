@@ -1,6 +1,8 @@
 
 import React, { useContext } from 'react'
+import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
+import DeleteButton from './DeleteButton';
 
 
 export default function InquiryCard({ inquiry }) {
@@ -8,6 +10,7 @@ export default function InquiryCard({ inquiry }) {
     const {
         handleSetSelectedInquiryId,
         selectedInquiryId } = useContext(InquiryContext);
+    const { deleteInquiry } = useTheWorkData();
 
     const selectedCard = inquiry.id === selectedInquiryId;
 
@@ -22,6 +25,8 @@ export default function InquiryCard({ inquiry }) {
                 {inquiry.thought.length > 0 && inquiry.thought}
                 {inquiry.thought.length == 0 && "No Title"}
             </div>
+
+            <DeleteButton onClick={() => deleteInquiry(inquiry.id)} />
         </div>
     )
 }
