@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
-import { TransitionGroup } from 'react-transition-group';
 import { InquiryContext } from './App';
 import DeleteButton from './DeleteButton'
 import TurnaroundExample from './TurnaroundExample';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import useTheWorkData from '../contexts/TheWorkContext';
 

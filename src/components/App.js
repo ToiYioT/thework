@@ -4,6 +4,9 @@ import useTheWorkData from "../contexts/TheWorkContext";
 import '../css/app.css'
 import InquiryView from "./InquiryView";
 import InquirySelector from './InquirySelector';
+import { Portal } from "@mantine/core";
+import { CSSTransition } from 'react-transition-group';
+import { TransitionGroup } from "react-transition-group";
 
 export const InquiryContext = createContext();
 
@@ -42,6 +45,7 @@ export default function App() {
   function closeInquiryView() {
     setSelectedInquiryId(null);
   }
+
 
   function handleSetSelectedInquiryId(id) {
 
@@ -119,18 +123,23 @@ export default function App() {
       <div className="main-container">
 
         <InquirySelector />
+
         {selectedInquiry &&
+          <Portal>
+            <DragDropContext onDragEnd={handleDragEnd}>
 
-          <DragDropContext onDragEnd={handleDragEnd}>
-            <InquiryView
-              inquiryData={selectedInquiry}
-              key={selectedInquiry.id}
-              closeView={closeInquiryView}
-            />
+              <InquiryView
+                inquiryData={selectedInquiry}
+                key={selectedInquiry.id}
+                closeView={closeInquiryView}
+              />
+            </DragDropContext>
 
-          </DragDropContext>
+          </Portal>
 
         }
+
+
       </div>
     </InquiryContext.Provider>
   );

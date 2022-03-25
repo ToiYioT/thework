@@ -46,18 +46,19 @@ export default function InquirySelector() {
                 <TextareaAutosize
                     onChange={e => setFilterText(e.target.value)}
                     ref={searchBarRef}
+                    className="filter-field"
                 />
             </div>
+            <button
+                className='add-inquiry-button'
+                onClick={handleAddInquiry}
+            >ADD INQUIRY</button>
 
             <div className="inquiry-selector-container">
                 {noMatch ? <div className="inquiry-card-container">NO MATCH</div>
                     : filteredInquiries
                 }
             </div>
-            <button
-                className='add-turnaround-button'
-                onClick={handleAddInquiry}
-            >NEW INQUIRY</button>
 
         </div>
     )

@@ -14,7 +14,7 @@
     border: 2px solid var(--selected-inquiry-background-color);
     border-radius: 1rem;
     padding: 1rem;
-    margin: 1.5rem 2rem 1rem 2rem;
+    margin: 1.5rem 1rem 1rem 1rem;
     box-shadow: 0 8px 6px -6px var(--selected-inquiry-background-color);
 
     overflow: hidden;
@@ -51,7 +51,7 @@
 
 
 .examples-container{
-    margin: 2rem 1rem;
+    margin: 1rem 0rem;
 }
 
 .turnaround-title{

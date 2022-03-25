@@ -21,10 +21,9 @@ export default function InquiryView(props) {
     const {
         focusedElementId,
         setFocusedElementId } = useContext(InquiryContext);
-
     const { setInquiry } = useTheWorkData();
-
     const thoughtRef = useRef();
+    const viewRef = useRef();
 
     useEffect(() => {
         if (focusedElementId.current === props.inquiryData.id) {
@@ -38,8 +37,15 @@ export default function InquiryView(props) {
         setInquiry(props.inquiryData.id, newInquiry);
     }
 
+    function handleCloseView() {
+        viewRef.current.classList.toggle("close-animation");
+        setTimeout(() => {
+            props.closeView();
+        }, 250);
+    }
+
     return (
-        <div className="inquiry-view-container">
+        <div className="inquiry-view-container" ref={viewRef}>
             <div className="thought-container">
                 <TextareaAutosize
                     className='thought-title'
@@ -51,7 +57,7 @@ export default function InquiryView(props) {
                 <Button
                     variant="gradient"
                     gradient={{ from: 'orange', to: 'red' }}
-                    onClick={() => props.closeView()}
+                    onClick={handleCloseView}
                 >X</Button>
             </div>
 

@@ -15,7 +15,8 @@ export default function DeleteButton({ onClick }) {
             className='delete-button'
             onClick={handleClick}
         >
-            DELETE
+            {/* DELETE */}
+            X
         </button>
     )
 }
