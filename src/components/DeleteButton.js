@@ -14,6 +14,7 @@ export default function DeleteButton({ onClick }) {
         <button
             className='delete-button'
             onClick={handleClick}
+            tabIndex={-1}
         >
             {/* DELETE */}
             X

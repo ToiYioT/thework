@@ -55,6 +55,7 @@ export default function InquiryView(props) {
                     placeholder="Thought Appears.."
                 />
                 <Button
+                    tabIndex={-1}
                     variant="gradient"
                     gradient={{ from: 'orange', to: 'red' }}
                     onClick={handleCloseView}

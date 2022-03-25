@@ -50,11 +50,12 @@ export default function TurnaroundExample(props) {
             ref={innerRef}
             {...draggableProps}
         >
-            <div className="example-handle" {...dragHandleProps}>
+            <div className="example-handle" tabIndex={-1} {...dragHandleProps}>
                 O
             </div>
             <button
                 className="delete-example-button"
+                tabIndex={-1}
                 onClick={() => {
                     deleteExample(example.id)
                 }}
