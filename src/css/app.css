@@ -28,6 +28,18 @@ html, body{
   background-color: var(--background-color-app);
 }
 
+.icon{
+  outline: none;
+}
+
+
+.delete-icon-container:hover{
+  background-color: var(--red-accent-color);
+}
+.delete-icon-container:hover .icon{
+  filter: brightness(0) invert();
+}
+
 
 .fade-item-enter {
   opacity: 0;

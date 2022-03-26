@@ -7,6 +7,8 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import useTheWorkData from '../contexts/TheWorkContext';
 
+import { ActionIcon } from '@mantine/core';
+import { Dots } from 'tabler-icons-react';
 
 export default function Turnaround(props) {
 
@@ -129,7 +131,18 @@ export default function Turnaround(props) {
         >
             <div className="turnaround-handle"
                 {...dragHandleProps}
-            >. . .</div>
+            >
+                <ActionIcon
+                    className='icon-container'
+                    variant="hover"
+                >
+                    <Dots
+                        className='icon'
+                        size={20}
+                        color="grey"
+                    />
+                </ActionIcon>
+            </div>
 
 
             <div className="turnaround-title-container">

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize';
 import { InquiryContext } from './App';
+import { DotsVertical } from 'tabler-icons-react';
+import { ActionIcon } from '@mantine/core';
 
 export default function TurnaroundExample(props) {
 
@@ -50,9 +52,18 @@ export default function TurnaroundExample(props) {
             ref={innerRef}
             {...draggableProps}
         >
-            <div className="example-handle" tabIndex={-1} {...dragHandleProps}>
-                O
-            </div>
+            <ActionIcon
+                className='icon-container'
+                variant="hover"
+                size="lg"
+                {...dragHandleProps}>
+
+                <DotsVertical
+                    className='icon'
+                    color='grey'
+                    size={20}
+                />
+            </ActionIcon>
             <button
                 className="delete-example-button"
                 tabIndex={-1}
