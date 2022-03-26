@@ -55,7 +55,6 @@ export default function TurnaroundExample(props) {
             <ActionIcon
                 className='icon-container'
                 variant="hover"
-                size="lg"
                 {...dragHandleProps}>
 
                 <DotsVertical

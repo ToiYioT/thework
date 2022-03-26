@@ -65,3 +65,9 @@
     /* ************************* */
     overflow: hidden;
 }
+
+
+.inquiry-card-buttons-container{
+    display: flex;
+    gap: .5rem;
+}

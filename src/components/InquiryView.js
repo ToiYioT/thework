@@ -5,7 +5,9 @@ import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App';
 import Question from './Question';
 import TurnaroundSection from './TurnaroundSection';
-import { Button } from '@mantine/core';
+
+import { ActionIcon } from '@mantine/core';
+import { CircleX } from 'tabler-icons-react';
 
 export default function InquiryView(props) {
     const {
@@ -54,12 +56,19 @@ export default function InquiryView(props) {
                     ref={thoughtRef}
                     placeholder="Thought Appears.."
                 />
-                <Button
-                    tabIndex={-1}
-                    variant="gradient"
-                    gradient={{ from: 'orange', to: 'red' }}
-                    onClick={handleCloseView}
-                >X</Button>
+
+                <ActionIcon
+                    className='icon-container'
+                    variant="transparent"
+                    size="lg">
+                    <CircleX
+                        className='icon'
+                        color='white'
+                        size={120}
+                        tabIndex={-1}
+                        onClick={handleCloseView}
+                    />
+                </ActionIcon>
             </div>
 
             <div className="questions-container">

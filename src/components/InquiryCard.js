@@ -4,6 +4,7 @@ import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
 import DeleteButton from './DeleteButton';
 
+import { Star } from 'tabler-icons-react';
 
 export default function InquiryCard({ inquiry }) {
 
@@ -26,7 +27,15 @@ export default function InquiryCard({ inquiry }) {
                 {inquiry.thought.length == 0 && "No Title"}
             </div>
 
-            <DeleteButton onClick={() => deleteInquiry(inquiry.id)} />
+            <div className="inquiry-card-buttons-container">
+                <Star
+                    className='icon'
+                    size={20}
+                    color="grey"
+                    tabIndex={-1}
+                />
+                <DeleteButton onClick={() => deleteInquiry(inquiry.id)} />
+            </div>
         </div>
     )
 }
