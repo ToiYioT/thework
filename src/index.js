@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import { TheWorkProvider } from './contexts/TheWorkContext';
 
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 ReactDOM.render(
   <React.StrictMode>
     <TheWorkProvider>
@@ -12,3 +14,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+
+serviceWorkerRegistration.register();
