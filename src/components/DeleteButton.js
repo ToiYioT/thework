@@ -1,12 +1,15 @@
 import React from 'react'
 import { ActionIcon } from '@mantine/core';
 import { Trash } from 'tabler-icons-react';
+import useLongPress from '../hooks/useLongPress';
 
 export default function DeleteButton({ onClick }) {
 
-    function handleClick() {
+    function onLongPress() {
         onClick();
     }
+
+    const longPressEvent = useLongPress(onLongPress, () => null);
 
     return (
         <ActionIcon
@@ -18,7 +21,8 @@ export default function DeleteButton({ onClick }) {
                 size={20}
                 color="red"
                 tabIndex={-1}
-                onClick={handleClick} />
+                {...longPressEvent}
+            />
         </ActionIcon>
     )
 }
