@@ -1,12 +1,10 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import useTheWorkData from "../contexts/TheWorkContext";
 import '../css/app.css'
 import InquiryView from "./InquiryView";
 import InquirySelector from './InquirySelector';
 import { Portal } from "@mantine/core";
-import { CSSTransition } from 'react-transition-group';
-import { TransitionGroup } from "react-transition-group";
 
 export const InquiryContext = createContext();
 
@@ -19,25 +17,12 @@ export default function App() {
 
   const [selectedInquiryId, setSelectedInquiryId] = useState(null);
 
-  const undoHistory = useRef([data]);
   const focusedElementId = useRef(null);
-
-
-  useEffect(() => {
-    document.addEventListener('keydown', function (event) {
-      if (event.ctrlKey && event.key === 'z') {
-        undo();
-      }
-    });
-  }, []);
-
   const selectedInquiry = data.find(inquiry => inquiry.id === selectedInquiryId);
 
   const contextValue = {
     handleSetSelectedInquiryId,
     selectedInquiryId,
-    saveUndoHistory,
-    undo,
     setFocusedElementId,
     focusedElementId,
   }
@@ -57,18 +42,6 @@ export default function App() {
     focusedElementId.current = id;
   }
 
-  function saveUndoHistory() {
-    undoHistory.current.push(data);
-  }
-
-
-  function undo() {
-    const lastState = undoHistory.current.pop();
-    if (lastState) {
-
-      setData(lastState);
-    }
-  }
 
   function handleDragEnd(result) {
 

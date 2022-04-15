@@ -1,14 +1,10 @@
-import React, { useContext } from 'react'
-import { InquiryContext } from './App'
+import React from 'react'
 import { ActionIcon } from '@mantine/core';
 import { Trash } from 'tabler-icons-react';
 
 export default function DeleteButton({ onClick }) {
 
-    const { saveUndoHistory } = useContext(InquiryContext);
-
     function handleClick() {
-        saveUndoHistory();
         onClick();
     }
 
