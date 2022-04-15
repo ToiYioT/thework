@@ -8,6 +8,9 @@ import TurnaroundSection from './TurnaroundSection';
 
 import { ActionIcon } from '@mantine/core';
 import { CircleX } from 'tabler-icons-react';
+import useEventListener from '../hooks/useEventListener';
+
+const ESCAPE_KEYS = ["27", "Escape"];
 
 export default function InquiryView(props) {
     const {
@@ -27,12 +30,20 @@ export default function InquiryView(props) {
     const thoughtRef = useRef();
     const viewRef = useRef();
 
+    useEventListener('keydown', onKeyDown);
+
     useEffect(() => {
         if (focusedElementId.current === props.inquiryData.id) {
             thoughtRef.current.focus();
             setFocusedElementId(null);
         }
     });
+
+    function onKeyDown(event) {
+        if (event.key == "Escape") {
+            handleCloseView();
+        }
+    }
 
     function updateInquiry(change) {
         const newInquiry = { ...props.inquiryData, ...change };
