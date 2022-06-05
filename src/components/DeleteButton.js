@@ -2,6 +2,7 @@ import React from 'react'
 import { ActionIcon } from '@mantine/core';
 import { Trash } from 'tabler-icons-react';
 import useLongPress from '../hooks/useLongPress';
+import { logDOM } from '@testing-library/react';
 
 export default function DeleteButton({ onClick }) {
 
@@ -22,6 +23,7 @@ export default function DeleteButton({ onClick }) {
                 color="red"
                 tabIndex={-1}
                 {...longPressEvent}
+                onClick={(e) => e.stopPropagation()}
             />
         </ActionIcon>
     )

@@ -1,16 +1,16 @@
-.side-bar-container{
+.side-bar-container {
     width: 100%;
     padding: 1.5rem;
 }
 
-.inquiry-selector-container{
+.inquiry-selector-container {
     display: grid;
     gap: .2rem 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr) );
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     padding-bottom: 1rem;
 }
 
-.inquiry-card-container{
+.inquiry-card-container {
 
     min-height: 100px;
     padding: 1.2rem 1rem;
@@ -27,24 +27,27 @@
     transition: .3s;
 }
 
-.inquiry-card-container:hover{
+.inquiry-card-container:hover {
+    box-shadow: 0 4px 6px -4px black;
+    border-color: var(--selected-inquiry-background-color);
+}
+
+/* .inquiry-card-container:active {
     transform: scale(1.05);
+} */
+
+.selected-card {
     border-color: var(--selected-inquiry-background-color);
 }
 
-.selected-card{
-    border-color: var(--selected-inquiry-background-color);
-    /* background-color: var(--selected-inquiry-background-color); */
-}
-
-.search-bar-container{
+.search-bar-container {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
     padding: 1rem;
 }
 
-.add-inquiry-button{
+.add-inquiry-button {
     border: none;
     background-color: white;
     border-radius: .3rem;
@@ -52,7 +55,7 @@
     padding: 1rem;
 }
 
-.filter-field{
+.filter-field {
     line-height: 1.4em;
     padding: .3rem;
     margin-left: .5rem;
@@ -67,7 +70,7 @@
 }
 
 
-.inquiry-card-buttons-container{
+.inquiry-card-buttons-container {
     display: flex;
     gap: .5rem;
 }
