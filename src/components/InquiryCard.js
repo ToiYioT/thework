@@ -4,7 +4,8 @@ import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
 import DeleteButton from './DeleteButton';
 
-import { Star } from 'tabler-icons-react';
+import { Star, Trash } from 'tabler-icons-react';
+import { Menu } from '@mantine/core';
 
 export default function InquiryCard({ inquiry }) {
 
@@ -27,14 +28,22 @@ export default function InquiryCard({ inquiry }) {
                 {inquiry.thought.length == 0 && "No Title"}
             </div>
 
+
+
             <div className="inquiry-card-buttons-container">
-                <Star
+                {/* <Star
                     className='icon'
                     size={20}
                     color="grey"
                     tabIndex={-1}
-                />
-                <DeleteButton onClick={() => deleteInquiry(inquiry.id)} />
+                /> */}
+                <Menu onClick={(e) => e.stopPropagation()}>
+                    <Menu.Item
+                        color="red"
+                        icon={<Trash size={14} />}
+                        onClick={() => deleteInquiry(inquiry.id)}
+                    >Delete</Menu.Item>
+                </Menu>
             </div>
         </div>
     )
