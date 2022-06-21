@@ -1,17 +1,16 @@
-
 import React, { useContext } from 'react'
 import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
 
-import { Archive, Star, Trash } from 'tabler-icons-react';
+import { Archive, Trash } from 'tabler-icons-react';
 import { Menu } from '@mantine/core';
 
-export default function InquiryCard({ inquiry }) {
+export default function InquiryCardArchive({ inquiry }) {
 
     const {
         handleSetSelectedInquiryId,
         selectedInquiryId } = useContext(InquiryContext);
-    const { setInquiry } = useTheWorkData();
+    const { deleteInquiry, setInquiry } = useTheWorkData();
 
     const selectedCard = inquiry.id === selectedInquiryId;
 
@@ -33,9 +32,8 @@ export default function InquiryCard({ inquiry }) {
                 <Menu onClick={(e) => e.stopPropagation()}>
                     <Menu.Item
                         icon={<Archive size={14} />}
-                        onClick={() => setInquiry(inquiry.id, { ...inquiry, ...{ archived: true } })}
-                    >Archive</Menu.Item>
-
+                        onClick={() => setInquiry(inquiry.id, { ...inquiry, ...{ archived: false } })}
+                    >Unarchive</Menu.Item>
                     <Menu.Item
                         color="red"
                         icon={<Trash size={14} />}
