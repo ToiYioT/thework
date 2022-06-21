@@ -1,15 +1,15 @@
-.turnaround-section-container{
+.turnaround-section-container {
     margin-bottom: 2rem;
     overflow: hidden;
 }
 
-.turnarounds-container{
+.turnarounds-container {
     margin: auto;
     max-width: 600px;
     align-self: center;
 }
 
-.turnaround-container{
+.turnaround-container {
     background-color: var(--question-color);
     border: 2px solid var(--selected-inquiry-background-color);
     border-radius: 1rem;
@@ -21,34 +21,35 @@
     position: relative;
 }
 
-.turnaround-handle{
+.turnaround-handle {
     position: absolute;
     color: var(--faded-color);
     top: 0;
     left: 50%;
 }
-.turnaround-handle:hover{
+
+.turnaround-handle:hover {
     color: var(--text-color);
 }
 
 
-.turnaround-title-container{
+.turnaround-title-container {
     display: flex;
 }
 
 
-.turnaround-example-container{
+.turnaround-example-container {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 
-.examples-container{
+.examples-container {
     margin: 1rem 0rem;
 }
 
-.turnaround-title{
+.turnaround-title {
     font-size: 1.4rem;
     font-weight: bold;
     background-color: var(--selected-inquiry-background-color);
@@ -57,19 +58,20 @@
     margin: 4rem 0 1rem 0;
 }
 
-.add-example-button, .delete-example-button{
+.add-example-button,
+.delete-example-button {
     background-color: transparent;
     color: var(--faded-color);
     border: 1px solid transparent;
     border-radius: .2rem;
 }
 
-.add-example-button{
+.add-example-button {
     font-size: 1.4rem;
     padding: 0 .5rem;
 }
 
-.delete-example-button{
+.delete-example-button {
     font-size: 1rem;
     font-weight: bold;
     padding: .3rem .6rem;
@@ -80,37 +82,38 @@
     z-index: 1;
 }
 
-.delete-example-button:hover + textarea{
+.delete-example-button:hover+textarea {
     color: var(--red-accent-color);
     text-decoration: line-through;
 }
 
-.add-example-button:hover, .delete-example-button:hover{
+.add-example-button:hover,
+.delete-example-button:hover {
     background-color: var(--background-color);
     color: white;
     border: 1px solid var(--faded-color);
 }
 
-.add-turnaround-button{
+.add-turnaround-button {
     padding: 1rem;
     margin: 1rem;
     background-color: white;
 
     color: var(--selected-inquiry-background-color);
     font-weight: bold;
-    border: 2px solid var(--selected-inquiry-background-color);
+    border: 1px solid var(--selected-inquiry-background-color);
     border-radius: 100px;
     box-shadow: 0 8px 6px -6px var(--selected-inquiry-background-color);
     transition: .1s;
 }
 
-.add-turnaround-button:hover{
+.add-turnaround-button:hover {
     cursor: pointer;
     background-color: var(--selected-inquiry-background-color);
     color: white;
 }
 
-.example{
+.example {
     font-size: 1rem;
     border-top: 1px dotted rgb(219, 219, 219);
     padding: 1rem 1rem 1rem 0rem;

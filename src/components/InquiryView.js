@@ -77,6 +77,7 @@ export default function InquiryView(props) {
                         color='white'
                         size={120}
                         tabIndex={-1}
+                        strokeWidth={1.2}
                         onClick={handleCloseView}
                     />
                 </ActionIcon>

@@ -3,12 +3,12 @@
 @import 'turnarounds-view.css';
 @import 'inquiry-selector.css';
 
-:root{
-  --accent-color : rgb(185, 125, 185);
-  --faded-color : rgb(219, 219, 219);
-  --selected-inquiry-background-color: rgb(122, 95, 124);
+:root {
+  --accent-color: rgb(125, 185, 131);
+  --faded-color: rgb(219, 219, 219);
+  --selected-inquiry-background-color: rgb(78, 90, 106);
+  --background-color: rgb(227, 236, 242);
   --selected-inquiry-text-color: rgb(255, 255, 255);
-  --background-color: rgb(224, 212, 219);
   --question-color: rgb(255, 255, 255);
   --text-color: rgb(80, 80, 80);
   --red-accent-color: rgb(255, 60, 60);
@@ -23,20 +23,22 @@
   font-family: sans-serif;
 }
 
-html, body{
+html,
+body {
   margin: 0;
   background-color: var(--background-color-app);
 }
 
-.icon{
+.icon {
   outline: none;
 }
 
 
-.delete-icon-container:hover{
+.delete-icon-container:hover {
   background-color: var(--red-accent-color);
 }
-.delete-icon-container:hover .icon{
+
+.delete-icon-container:hover .icon {
   filter: brightness(0) invert();
 }
 
@@ -44,30 +46,33 @@ html, body{
 .fade-item-enter {
   opacity: 0;
 }
+
 .fade-item-enter-active {
   opacity: 1;
-  transition:  200ms ;
+  transition: 200ms;
 }
+
 .fade-item-exit {
   opacity: 1;
 }
+
 .fade-item-exit-active {
   opacity: 0;
   transform: translateX(100%);
-  transition:  500ms ;
+  transition: 500ms;
 }
 
 
-.main-container{
+.main-container {
   display: flex;
   justify-content: center;
 }
 
-.button{
+.button {
   padding: 1rem;
 }
 
-.delete-button{
+.delete-button {
   align-self: start;
   color: red;
   font-weight: bold;
@@ -79,21 +84,21 @@ html, body{
   transition: .1s;
 }
 
-.delete-button:hover{
+.delete-button:hover {
   background-color: var(--red-accent-color);
   color: white;
   cursor: pointer;
   transform: scale(1.1);
 }
 
-.delete-button:active{
+.delete-button:active {
   background-color: var(--red-accent-color);
   color: white;
   cursor: pointer;
   transform: scale(.9);
 }
 
-.no-inquiry-selected{
+.no-inquiry-selected {
   display: flex;
   flex: 1;
   justify-content: center;
@@ -103,4 +108,3 @@ html, body{
   color: var(--accent-color);
   font-weight: bold;
 }
-
