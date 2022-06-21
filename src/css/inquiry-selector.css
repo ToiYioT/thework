@@ -1,6 +1,6 @@
 .side-bar-container {
     width: 100%;
-    padding: 1.5rem;
+    padding: 1.0rem;
 }
 
 .inquiry-selector-container {
@@ -32,10 +32,6 @@
     border-color: var(--selected-inquiry-background-color);
 }
 
-/* .inquiry-card-container:active {
-    transform: scale(1.05);
-} */
-
 .selected-card {
     border-color: var(--selected-inquiry-background-color);
 }
@@ -47,13 +43,6 @@
     padding: 1rem;
 }
 
-.add-inquiry-button {
-    border: none;
-    background-color: white;
-    border-radius: .3rem;
-    border: 1px solid var(--grey-outline-color);
-    padding: 1rem;
-}
 
 .filter-field {
     line-height: 1.4em;
@@ -73,4 +62,9 @@
 .inquiry-card-buttons-container {
     display: flex;
     gap: .5rem;
+}
+
+
+.no-results-container {
+    padding: 1rem;
 }

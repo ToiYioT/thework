@@ -68,7 +68,10 @@ function getNewInquiry() {
         areYouSure: "",
         howDoYouReact: "",
         whoWouldYouBe: "",
-        turnarounds: []
+        turnarounds: [],
+
+        archived: false,
+        deleted: false
     }
 
     return newInqury;

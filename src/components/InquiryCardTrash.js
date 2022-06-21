@@ -1,17 +1,16 @@
-
 import React, { useContext } from 'react'
 import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
 
-import { Star, Trash } from 'tabler-icons-react';
+import { Star, Trash, TrashOff } from 'tabler-icons-react';
 import { Menu } from '@mantine/core';
 
-export default function InquiryCard({ inquiry }) {
+export default function InquiryCardTrash({ inquiry }) {
 
     const {
         handleSetSelectedInquiryId,
         selectedInquiryId } = useContext(InquiryContext);
-    const { setInquiry } = useTheWorkData();
+    const { deleteInquiry, setInquiry } = useTheWorkData();
 
     const selectedCard = inquiry.id === selectedInquiryId;
 
@@ -32,10 +31,16 @@ export default function InquiryCard({ inquiry }) {
             <div className="inquiry-card-buttons-container">
                 <Menu onClick={(e) => e.stopPropagation()}>
                     <Menu.Item
+                        icon={<TrashOff size={14} />}
+                        onClick={() => setInquiry(inquiry.id, { ...inquiry, ...{ deleted: false } })}
+                    >Restore</Menu.Item>
+
+                    <Menu.Item
                         color="red"
                         icon={<Trash size={14} />}
-                        onClick={() => setInquiry(inquiry.id, { ...inquiry, ...{ deleted: true } })}
-                    >Trash</Menu.Item>
+                        onClick={() => deleteInquiry(inquiry.id)}
+                    >Delete Permanently</Menu.Item>
+
                 </Menu>
             </div>
         </div >
