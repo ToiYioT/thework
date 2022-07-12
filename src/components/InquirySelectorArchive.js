@@ -3,11 +3,9 @@ import useTheWorkData from '../contexts/TheWorkContext'
 import InquiryCardArchive from './InquiryCardArchive';
 import TextareaAutosize from 'react-textarea-autosize'
 
-export default function InquirySelectorArchive() {
+export default function InquirySelectorArchive({ filterText, setFilterText }) {
 
     const { data } = useTheWorkData();
-
-    const [filterText, setFilterText] = useState("");
     const searchBarRef = useRef();
 
     const filteredInquiries = data.slice(0).reverse().map(inquiry => {
@@ -28,6 +26,7 @@ export default function InquirySelectorArchive() {
             <div className="search-bar-container">
                 <div>Filter</div>
                 <TextareaAutosize
+                    defaultValue={filterText}
                     onChange={e => setFilterText(e.target.value)}
                     ref={searchBarRef}
                     className="filter-field"

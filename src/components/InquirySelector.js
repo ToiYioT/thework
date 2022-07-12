@@ -9,6 +9,7 @@ import InquirySelectorTrash from './InquirySelectorTrash';
 export default function InquirySelector() {
 
     const [activeTab, setActiveTab] = useState(0);
+    const [filterText, setFilterText] = useState("");
 
     return (
         <div className="side-bar-container">
@@ -21,7 +22,10 @@ export default function InquirySelector() {
                 <Tabs.Tab label="Archive"
                     icon={<Archive size={18} />}
                 >
-                    <InquirySelectorArchive />
+                    <InquirySelectorArchive
+                        filterText={filterText}
+                        setFilterText={setFilterText}
+                    />
 
                 </Tabs.Tab>
                 <Tabs.Tab label="Trash"
