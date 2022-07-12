@@ -1,3 +1,7 @@
+:root {
+    --empty-inquiry-color: rgb(183, 183, 183);
+}
+
 .side-bar-container {
     width: 100%;
     padding: 1.0rem;
@@ -25,6 +29,8 @@
     justify-content: space-between;
 
     transition: .3s;
+
+    position: relative;
 }
 
 .inquiry-card-container:hover {
@@ -32,8 +38,8 @@
     border-color: var(--selected-inquiry-background-color);
 }
 
-.selected-card {
-    border-color: var(--selected-inquiry-background-color);
+.empty-inquiry {
+    color: var(--empty-inquiry-color);
 }
 
 .search-bar-container {
@@ -60,8 +66,9 @@
 
 
 .inquiry-card-buttons-container {
-    display: flex;
-    gap: .5rem;
+    position: absolute;
+    top: .2rem;
+    right: .2rem;
 }
 
 

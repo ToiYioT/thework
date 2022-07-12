@@ -11,7 +11,7 @@
 
 .turnaround-container {
     background-color: var(--question-color);
-    border: 2px solid var(--selected-inquiry-background-color);
+    border: 1px solid var(--selected-inquiry-background-color);
     border-radius: 1rem;
     padding: 1rem;
     margin: 1.5rem 1rem 1rem 1rem;
