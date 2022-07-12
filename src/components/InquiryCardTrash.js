@@ -2,22 +2,20 @@ import React, { useContext } from 'react'
 import useTheWorkData from '../contexts/TheWorkContext';
 import { InquiryContext } from './App'
 
-import { Star, Trash, TrashOff } from 'tabler-icons-react';
+import { Trash, TrashOff } from 'tabler-icons-react';
 import { Menu } from '@mantine/core';
 
 export default function InquiryCardTrash({ inquiry }) {
 
-    const {
-        handleSetSelectedInquiryId,
-        selectedInquiryId } = useContext(InquiryContext);
+    const { handleSetSelectedInquiryId, } = useContext(InquiryContext);
     const { deleteInquiry, setInquiry } = useTheWorkData();
-
-    const selectedCard = inquiry.id === selectedInquiryId;
 
     return (
         <div
-            className={selectedCard ? "inquiry-card-container selected-card"
+            className={inquiry.turnarounds.length === 0
+                ? "inquiry-card-container empty-inquiry"
                 : "inquiry-card-container"}
+
             onClick={() => handleSetSelectedInquiryId(inquiry.id)}
         >
             <div className="inquiry-card-thought-container"

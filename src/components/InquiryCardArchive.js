@@ -7,16 +7,13 @@ import { Menu } from '@mantine/core';
 
 export default function InquiryCardArchive({ inquiry }) {
 
-    const {
-        handleSetSelectedInquiryId,
-        selectedInquiryId } = useContext(InquiryContext);
-    const { deleteInquiry, setInquiry } = useTheWorkData();
-
-    const selectedCard = inquiry.id === selectedInquiryId;
+    const { handleSetSelectedInquiryId, } = useContext(InquiryContext);
+    const { setInquiry } = useTheWorkData();
 
     return (
         <div
-            className={selectedCard ? "inquiry-card-container selected-card"
+            className={inquiry.turnarounds.length === 0
+                ? "inquiry-card-container empty-inquiry"
                 : "inquiry-card-container"}
             onClick={() => handleSetSelectedInquiryId(inquiry.id)}
         >
